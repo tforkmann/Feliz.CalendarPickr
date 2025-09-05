@@ -133,7 +133,6 @@ Target.create "PrepareRelease" (fun _ ->
     Git.Branches.pushTag "" "origin" tagName
 )
 
-
 Target.create "Pack" (fun _ ->
     let nugetVersion = release.NugetVersion
 
@@ -150,7 +149,7 @@ Target.create "Pack" (fun _ ->
                           "PackageRequireLicenseAcceptance", "false"
                           "Description", description
                           "Summary", summary
-                          "PackageReleaseNotes", ((String.toLines release.Notes).Replace(",",""))
+                          "PackageReleaseNotes", (String.toLines release.Notes).Replace(",","")
                           "Copyright", copyright
                           "PackageTags", tags
                           "PackageProjectUrl", projectUrl
@@ -186,6 +185,7 @@ let pushPackage _ =
         Trace.tracef "fileName %s" fileName
         let cmd = nugetCmd fileName key
         run dotnet cmd buildDir)
+
 Target.create "Push" (fun _ -> pushPackage [] )
 
 let docsSrcPath = Path.getFullName "./src/Docs"
