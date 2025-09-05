@@ -15,9 +15,9 @@ type option =
         Interop.mkOptionsProp "dateFormat" format
     static member inline disableMobile(disableMobile: bool) : IOptionsProp =
         Interop.mkOptionsProp "disableMobile" disableMobile
-    static member inline minDate(date:DateTimeOffset option) : IOptionsProp =
+    static member inline minDate(date:DateTime option) : IOptionsProp =
         Interop.mkOptionsProp "minDate" date
-    static member inline maxDate(date:DateTimeOffset option) : IOptionsProp =
+    static member inline maxDate(date:DateTime option) : IOptionsProp =
         Interop.mkOptionsProp "maxDate" date
     static member inline time_24hr(time_24hr: bool) : IOptionsProp =
         Interop.mkOptionsProp "time_24hr" time_24hr
