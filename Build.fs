@@ -4,7 +4,6 @@ open Fake.Core
 open Fake.DotNet
 open Fake.Core.TargetOperators
 open Fake.IO
-open Fake.IO.FileSystemOperators
 open Fake.IO.Globbing.Operators
 open Fake.Tools
 open Helpers
@@ -30,11 +29,11 @@ let release = ReleaseNotes.load "RELEASE_NOTES.md"
 // The profile where the project is posted
 let gitHome = "https://github"
 // The name of the project on GitHub
-let gitName = "Feliz.FlatPickr"
+let gitName = "Feliz.ReactFlatPickr"
 
 // The name of the project
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let project = "Feliz.FlatPickr"
+let project = "Feliz.ReactFlatPickr"
 
 let projectUrl = sprintf "%s/%s" gitHome gitName
 
@@ -43,8 +42,8 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 let summary = "Feliz React Binding for react-date-range"
 
 let copyright = "Copyright \169 2023"
-let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.FlatPickr_logo.png"
-let licenceUrl = "https://github.com/tforkmann/Feliz.FlatPickr/blob/main/LICENSE.md"
+let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.ReactFlatPickr_logo.png"
+let licenceUrl = "https://github.com/tforkmann/Feliz.ReactFlatPickr/blob/main/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project
@@ -165,7 +164,7 @@ Target.create "Pack" (fun _ ->
                   MSBuildParams = args
               }) projectPath
 
-    pack "Feliz.FlatPickr"
+    pack "Feliz.ReactFlatPickr"
 )
 
 let getBuildParam = Environment.environVar
