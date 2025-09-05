@@ -2,7 +2,7 @@ module Index
 
 open Elmish
 open Feliz
-open Feliz.ReactFlatPickr
+open Feliz.CalendarPickr
 open System
 
 type Model = { Date: DateTimeOffset }

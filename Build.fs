@@ -29,11 +29,11 @@ let release = ReleaseNotes.load "RELEASE_NOTES.md"
 // The profile where the project is posted
 let gitHome = "https://github"
 // The name of the project on GitHub
-let gitName = "Feliz.ReactFlatPickr"
+let gitName = "Feliz.CalendarPickr"
 
 // The name of the project
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let project = "Feliz.ReactFlatPickr"
+let project = "Feliz.CalendarPickr"
 
 let projectUrl = sprintf "%s/%s" gitHome gitName
 
@@ -42,8 +42,8 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 let summary = "Feliz React Binding for react-date-range"
 
 let copyright = "Copyright \169 2023"
-let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.ReactFlatPickr_logo.png"
-let licenceUrl = "https://github.com/tforkmann/Feliz.ReactFlatPickr/blob/main/LICENSE.md"
+let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.CalendarPickr_logo.png"
+let licenceUrl = "https://github.com/tforkmann/Feliz.CalendarPickr/blob/main/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project
@@ -164,7 +164,7 @@ Target.create "Pack" (fun _ ->
                   MSBuildParams = args
               }) projectPath
 
-    pack "Feliz.ReactFlatPickr"
+    pack "Feliz.CalendarPickr"
 )
 
 let getBuildParam = Environment.environVar

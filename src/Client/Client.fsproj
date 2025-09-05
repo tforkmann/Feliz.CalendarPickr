@@ -11,7 +11,7 @@
         <Compile Include="App.fs" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Feliz.ReactFlatPickr\Feliz.ReactFlatPickr.fsproj" />
+        <ProjectReference Include="..\Feliz.CalendarPickr\Feliz.CalendarPickr.fsproj" />
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
