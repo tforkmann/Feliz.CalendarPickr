@@ -1,4 +1,4 @@
-# Feliz Binding for [react-flatpickr](https://github.com/hypeserver/react-date-range)
+# Feliz Binding for [react-flatpickr](https://github.com/haoxins/react-flatpickr)
 
 [![Feliz.FlatPickr on Nuget](https://buildstats.info/nuget/Feliz.FlatPickr)](https://www.nuget.org/packages/Feliz.FlatPickr/)
 [![Docs](https://github.com/tforkmann/Feliz.FlatPickr/actions/workflows/Docs.yml/badge.svg)](https://github.com/tforkmann/Feliz.FlatPickr/actions/workflows/Docs.yml)

@@ -2,41 +2,11 @@ namespace Feliz.FlatPickr
 
 open Fable.Core
 open System
-/// This interface allows us to stop adding random props to the react-date-range.
-type IDateRangeProp =
+
+type IFlatPickrProp =
     interface
     end
 
-type IDateRangePickerProp =
+type IOptionsProp =
     interface
     end
-type ICalendarProp =
-    interface
-    end
-type IRangesProp =
-    interface
-    end
-type IStaticRangesProp =
-    interface
-    end
-type IInputRangesProp =
-    interface
-    end
-type IStaticRangeProp =
-    interface
-    end
-type IInputRangeProp =
-    interface
-    end
-
-
-[<Erase>]
-type Range = {
-    StartDate: DateTimeOffset
-    EndDate: DateTimeOffset
-}
-
-[<StringEnum;RequireQualifiedAccess>]
-type Direction =
-    | Horizontal
-    | Vertical

@@ -5,11 +5,9 @@ open Fable.Core.JsInterop
 
 [<Erase; RequireQualifiedAccess>]
 module Interop =
-    let inline mkDateRangePickerProp (key: string) (value: obj) : IDateRangePickerProp = unbox (key, value)
-    let inline mkCalendarProp (key: string) (value: obj) : ICalendarProp = unbox (key, value)
-    let inline mkRangesProp (key: string) (value: obj) : IRangesProp = unbox (key, value)
-    let inline mkStaticRangeProp (key: string) (value: obj) : IStaticRangeProp = unbox (key, value)
-    let inline mkInputRangeProp (key: string) (value: obj) : IInputRangeProp = unbox (key, value)
+    let inline mkFlatPickrProp (key: string) (value: obj) : IFlatPickrProp = unbox (key, value)
+    let inline mkOptionsProp (key: string) (value: obj) : IOptionsProp = unbox (key, value)
 
-    let DateRangePicker obj = import "DateRangePicker" "react-date-range"
-    let Calendar obj = import "Calendar" "react-date-range"
+    importSideEffects "flatpickr/dist/themes/material_green.css"
+    importSideEffects "flatpickr/dist/l10n/de.js"
+    let flatPickr: obj = importDefault "react-flatpickr"
