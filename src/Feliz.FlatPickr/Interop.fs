@@ -1,4 +1,4 @@
-namespace Feliz.CalendarPickr
+namespace Feliz.FlatPickr
 
 open Fable.Core
 open Fable.Core.JsInterop

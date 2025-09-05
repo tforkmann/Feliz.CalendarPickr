@@ -1,7 +1,8 @@
-namespace Feliz.CalendarPickr
+namespace Feliz.FlatPickr
 
 open System
 open Fable.Core
+
 [<Erase>]
 type option =
     static member inline allowInput(allowInput: bool) : IOptionsProp =

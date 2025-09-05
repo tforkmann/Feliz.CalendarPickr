@@ -33,14 +33,13 @@ Here is an example FlatPickr
 [<ReactComponent>]
 let FlatPickr date =
      FlatPickr.flatPickr [
-                flatPickr.disabled false
-                flatPickr.value date
-                flatPickr.options [
-                    option.allowInput true
-                    option.clearable true
-                ]
-
-            ]
+        flatPickr.disabled false
+        flatPickr.value date
+        flatPickr.options [
+            option.allowInput true
+            option.clearable true
+        ]
+    ]
 
 ```
 

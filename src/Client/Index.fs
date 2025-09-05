@@ -2,18 +2,18 @@ module Index
 
 open Elmish
 open Feliz
-open Feliz.CalendarPickr
+open Feliz.FlatPickr
 open System
 
-type Model = { Date: DateTimeOffset }
+type Model = { Date: DateTime }
 
 type Msg =
-    | SetStartDate of DateTimeOffset
-    | SetEndDate of DateTimeOffset
+    | SetStartDate of DateTime
+    | SetEndDate of DateTime
 
 let init () =
     {
-        Date = DateTimeOffset(2019, 1, 1, 0, 0, 0, TimeSpan.Zero)
+        Date = DateTime(2019, 1, 1)
     },
     Cmd.none
 
@@ -28,7 +28,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
         prop.children [
             FlatPickr.flatPickr [
                 flatPickr.disabled false
-                flatPickr.value model.Date
+                flatPickr.value (Some model.Date)
                 flatPickr.options [
                     option.allowInput true
                     option.clearable true
