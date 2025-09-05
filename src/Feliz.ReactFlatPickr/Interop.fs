@@ -1,4 +1,4 @@
-namespace Feliz.FlatPickr
+namespace Feliz.ReactFlatPickr
 
 open Fable.Core
 open Fable.Core.JsInterop

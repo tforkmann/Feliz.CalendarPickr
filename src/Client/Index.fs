@@ -2,9 +2,8 @@ module Index
 
 open Elmish
 open Feliz
-open Feliz.FlatPickr
+open Feliz.ReactFlatPickr
 open System
-open Fable.DateFunctions
 
 type Model = { Date: DateTimeOffset }
 
