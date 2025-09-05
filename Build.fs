@@ -42,8 +42,8 @@ let projectUrl = sprintf "%s/%s" gitHome gitName
 let summary = "Feliz React Binding for react-date-range"
 
 let copyright = "Copyright \169 2023"
-let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.tDateRange/main/Feliz.CalendarPickr_logo.png"
-let licenceUrl = "https://github.com/tforkmann/Feliz.CalendarPickr/blob/main/LICENSE.md"
+let iconUrl = "https://raw.githubusercontent.com/tforkmann/Feliz.FlatPickr/main/Feliz.FlatPickr_logo.png"
+let licenceUrl = "https://github.com/tforkmann/Feliz.FlatPickr/blob/main/LICENSE.md"
 let configuration = DotNet.BuildConfiguration.Release
 
 // Longer description of the project
@@ -53,7 +53,7 @@ let description = """Feliz binding for react-date-range."""
 let authors = [ "Tim Forkmann"]
 let owner = "tForkmann"
 // Tags for your project (for NuGet package)
-let tags = "fsharp;fable;react-date-range;feliz;react;DateRange"
+let tags = "fsharp;fable;feliz;react-flatpickr;flatpickr"
 
 
 Target.create "Clean" (fun _ ->
@@ -164,7 +164,7 @@ Target.create "Pack" (fun _ ->
                   MSBuildParams = args
               }) projectPath
 
-    pack "Feliz.CalendarPickr"
+    pack "Feliz.FlatPickr"
 )
 
 let getBuildParam = Environment.environVar
