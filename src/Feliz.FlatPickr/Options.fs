@@ -23,3 +23,5 @@ type option =
         Interop.mkOptionsProp "time_24hr" time_24hr
     static member inline noCalendar(noCalendar: bool) : IOptionsProp =
         Interop.mkOptionsProp "noCalendar" noCalendar
+    static member inline enableTime(enableTime: bool) : IOptionsProp =
+        Interop.mkOptionsProp "enableTime" enableTime
