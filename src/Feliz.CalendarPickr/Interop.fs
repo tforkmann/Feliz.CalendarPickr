@@ -7,7 +7,9 @@ open Fable.Core.JsInterop
 module Interop =
     let inline mkFlatPickrProp (key: string) (value: obj) : IFlatPickrProp = unbox (key, value)
     let inline mkOptionsProp (key: string) (value: obj) : IOptionsProp = unbox (key, value)
+    let inline mkStylesProp (key: string) (value: obj) : IFlatPickrStylesProp = unbox (key, value)
 
     importSideEffects "flatpickr/dist/themes/material_green.css"
     importSideEffects "flatpickr/dist/l10n/de.js"
+    importSideEffects "./css/override.css"
     let flatPickr: obj = importDefault "react-flatpickr"

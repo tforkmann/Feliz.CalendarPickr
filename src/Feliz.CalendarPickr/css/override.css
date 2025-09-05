@@ -1,0 +1,22 @@
+.flatpickr-calendar {
+    background-color: var(--primary) !important;
+}
+
+.flatpickr-current-month {
+    background-color: var(--primary) !important;
+    border: 2px solid var(--secondary) !important;
+}
+
+.flatpickr-day {
+    color: var(--secondary) !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background-color: var(--primary) !important;
+    color: white !important;
+}
+.flatpickr-weekday {
+    background-color: var(--primary) !important;
+    color: white !important;
+}

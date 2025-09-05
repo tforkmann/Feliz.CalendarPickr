@@ -33,6 +33,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                     option.allowInput true
                     option.clearable true
                 ]
+                flatPickr.themeColors(primary="#D50037", secondary="#333F4C")
 
             ]
 
