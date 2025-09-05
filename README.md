@@ -12,7 +12,7 @@ dotnet paket add Feliz.FlatPickr
 and install the npm package
 
 ```
-npm install --save react-date-range
+npm install --save react-flatpickr
 ```
 
 or use Femto:
@@ -27,28 +27,21 @@ femto install Feliz.FlatPickr
 dotnet run
 ```
 
-## Example DateRange
-Here is an example DateRange
+## Example FlatPickr usage
+Here is an example FlatPickr
 ```fs
 [<ReactComponent>]
-let DateRangePicker (startDate,endDate,setStartDate,setEndDate) =
-    DateRange.dateRangePicker [
-        dateRangePicker.months 2
-        dateRangePicker.showSelectionPreview true
-        dateRangePicker.moveRangeOnFirstSelection false
-        dateRangePicker.direction Direction.Horizontal
-        dateRangePicker.locale DateTime.Locales.German
-        dateRangePicker.onChange (fun handler ->
-            setStartDate handler.range1.startDate
-            setEndDate handler.range1.endDate
-        )
-        dateRangePicker.ranges [
-            dateRangePicker.range [
-                ranges.startDate startDate
-                ranges.endDate endDate
+let FlatPickr date =
+     FlatPickr.flatPickr [
+                flatPickr.disabled false
+                flatPickr.value date
+                flatPickr.options [
+                    option.allowInput true
+                    option.clearable true
+                ]
+
             ]
-        ]
-    ]
+
 ```
 
 You can find more examples [here](https://tforkmann.github.io/Feliz.FlatPickr/)
