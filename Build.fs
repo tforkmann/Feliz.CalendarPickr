@@ -33,7 +33,7 @@ let gitName = "Feliz.CalendarPickr"
 
 // The name of the project
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let project = "Feliz.CalendarPickr"
+let projectName = "Feliz.CalendarPickr"
 
 let projectUrl = sprintf "%s/%s" gitHome gitName
 
@@ -141,7 +141,7 @@ Target.create "Pack" (fun _ ->
             let defaultArgs = MSBuild.CliArguments.Create()
             { defaultArgs with
                       Properties = [
-                          "Title", project
+                          "Title", projectName
                           "PackageVersion", nugetVersion
                           "Authors", (String.Join(" ", authors))
                           "Owners", owner
