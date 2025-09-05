@@ -141,7 +141,7 @@ Target.create "Pack" (fun _ ->
             let defaultArgs = MSBuild.CliArguments.Create()
             { defaultArgs with
                       Properties = [
-                          "Title", projectName
+                          "Title", project
                           "PackageVersion", nugetVersion
                           "Authors", (String.Join(" ", authors))
                           "Owners", owner
@@ -164,7 +164,7 @@ Target.create "Pack" (fun _ ->
                   MSBuildParams = args
               }) projectPath
 
-    pack "Feliz.FlatPickr"
+    pack "Feliz.CalendarPickr"
 )
 
 let getBuildParam = Environment.environVar
