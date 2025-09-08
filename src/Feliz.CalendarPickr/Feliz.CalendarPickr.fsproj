@@ -14,9 +14,9 @@
       <NpmPackage Name="react-flatpickr" Version="gt 1.0.0 lt 1.9.9" ResolutionStrategy="Max" DevDependency="true" />
     </NpmDependencies>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js" PackagePath="fable\" />
-  </ItemGroup>
+  <None Include="css/*.css">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
   <ItemGroup>
     <Content Include="css/override.css"/>
   </ItemGroup>
