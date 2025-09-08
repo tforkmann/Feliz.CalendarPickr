@@ -4,6 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="css/*.css">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="Types.fs" />
     <Compile Include="Interop.fs" />
     <Compile Include="Options.fs" />
@@ -14,9 +17,6 @@
       <NpmPackage Name="react-flatpickr" Version="gt 1.0.0 lt 1.9.9" ResolutionStrategy="Max" DevDependency="true" />
     </NpmDependencies>
   </PropertyGroup>
-  <None Include="css/*.css">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-  </None>
   <ItemGroup>
     <Content Include="css/override.css"/>
   </ItemGroup>
