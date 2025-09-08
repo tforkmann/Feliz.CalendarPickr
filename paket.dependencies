@@ -25,4 +25,3 @@ group Package
     framework: netstandard2.0
 
     nuget Feliz
-    nuget Fable.DateFunctions
