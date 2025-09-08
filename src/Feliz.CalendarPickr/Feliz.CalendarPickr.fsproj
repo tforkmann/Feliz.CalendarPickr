@@ -17,8 +17,5 @@
       <NpmPackage Name="react-flatpickr" Version="gt 1.0.0 lt 1.9.9" ResolutionStrategy="Max" DevDependency="true" />
     </NpmDependencies>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="css/override.css"/>
-  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
