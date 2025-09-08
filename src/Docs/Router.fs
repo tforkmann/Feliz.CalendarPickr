@@ -7,7 +7,7 @@ open Fable.Core.JsInterop
 type Page =
     | Install
     | Use
-    | DateRange
+    | FlatPickr
 
 [<RequireQualifiedAccess>]
 module Page =
@@ -16,7 +16,7 @@ module Page =
     let parseFromUrlSegments =
         function
         | [ "use" ] -> Use
-        | [ "DateRange" ] -> DateRange
+        | [ "FlatPickr" ] -> FlatPickr
         | [] -> Install
         | _ -> defaultPage
 
@@ -25,7 +25,7 @@ module Page =
     let toUrlSegments =
         function
         | Install -> [] |> noQueryString
-        | DateRange -> ["DateRange"] |> noQueryString
+        | FlatPickr -> ["FlatPickr"] |> noQueryString
         | Use -> [ "use" ] |> noQueryString
 
 [<RequireQualifiedAccess>]

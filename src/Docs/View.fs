@@ -120,7 +120,7 @@ let private leftSide (p: Page) =
                         Daisy.menuTitle [ Html.span "Docs" ]
                         mi "Install" Install
                         mi "Use" Use
-                        mi "DateRange" Page.DateRange
+                        mi "FlatPickr" Page.FlatPickr
                         ]
                 ]
             ]
@@ -154,7 +154,7 @@ let AppView (state: State) (dispatch: Msg -> unit) =
         match state.Page with
         | Install -> "Installation", "/docs/install", Pages.Install.InstallView()
         | Use -> "How to use", "/docs/use", Pages.Use.UseView()
-        | DateRange -> "DateRange", "/DateRange", Pages.DateRangeView.DateRangeView()
+        | FlatPickr -> "FlatPickr", "/FlatPickr", Pages.FlatPickrView.FlatPickrView()
 
     React.router [
         router.hashMode

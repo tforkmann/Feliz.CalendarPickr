@@ -17,5 +17,8 @@
       <NpmPackage Name="react-flatpickr" Version="gt 4.0.0 lt 4.9.9" ResolutionStrategy="Max" DevDependency="true" />
     </NpmDependencies>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js" PackagePath="fable\" />
+  </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

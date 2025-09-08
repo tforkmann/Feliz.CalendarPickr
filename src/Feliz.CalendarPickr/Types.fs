@@ -1,6 +1,5 @@
 namespace Feliz.FlatPickr
 
-
 type IFlatPickrProp =
     interface
     end
