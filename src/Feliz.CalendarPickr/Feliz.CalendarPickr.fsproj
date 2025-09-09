@@ -4,9 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="css/*.css">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Compile Include="override.css" />
     <Compile Include="Types.fs" />
     <Compile Include="Interop.fs" />
     <Compile Include="Options.fs" />

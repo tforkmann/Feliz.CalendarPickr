@@ -11,5 +11,5 @@ module Interop =
 
     importSideEffects "flatpickr/dist/themes/material_green.css"
     importSideEffects "flatpickr/dist/l10n/de.js"
-    importSideEffects "./css/override.css"
+    importSideEffects "./override.css"
     let flatPickr: obj = importDefault "react-flatpickr"

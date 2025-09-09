@@ -190,6 +190,7 @@ NUGET
     Feliz.Markdown (2.4)
       Feliz (>= 2.4)
       FSharp.Core (>= 4.7.2)
+    Feliz.Plotly (0.4)
     Feliz.QRCode (0.3.1)
       Fable.Browser.Svg (>= 2.4)
       Feliz (>= 2.8)

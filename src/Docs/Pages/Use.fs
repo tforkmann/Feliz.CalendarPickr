@@ -1,7 +1,6 @@
 ﻿module Docs.Pages.Use
 
 open Feliz
-open Elmish
 open Docs.SharedView
 
 [<ReactComponent>]
