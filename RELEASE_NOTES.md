@@ -1,4 +1,4 @@
-#### 0.4.0 - 2025-09-09
+#### 0.4.1 - 2025-09-09
 * Copy override.css to output directory
 #### 0.3.0 - 2025-09-05
 * Color overwrite
