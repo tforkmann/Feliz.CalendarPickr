@@ -16,7 +16,7 @@
     </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js" PackagePath="fable\" />
+    <Content Include="*.fsproj; *.fs; *.js; *.css" Exclude="**\*.fs.js" PackagePath="fable\" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
