@@ -1,3 +1,5 @@
+#### 0.4.3 - 2025-09-09
+* Optimize override.css deployment
 #### 0.4.2 - 2025-09-09
 * Copy override.css to output directory
 #### 0.3.0 - 2025-09-05

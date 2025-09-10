@@ -1,5 +1,10 @@
-.flatpickr-calendar {
+.flatpickr-month {
     background-color: var(--primary) !important;
+    color: var(--secondary) !important;
+}
+.flatpickr-weekdays {
+    background-color: var(--primary) !important;
+    color: var(--secondary) !important;
 }
 
 .flatpickr-current-month {
@@ -18,5 +23,19 @@
 }
 .flatpickr-weekday {
     background-color: var(--primary) !important;
+    color: white !important;
+}
+
+.flatpickr-monthDropdown-months {
+    background-color: var(--primary) !important;
+    color: var(--secondary) !important;
+}
+.flatpickr-monthDropdown-months:hover {
+    background-color: var(--secondary) !important;
+    color: white !important;
+}
+
+.numInputWrapper:hover {
+    background-color: var(--secondary) !important;
     color: white !important;
 }
