@@ -1,3 +1,5 @@
+#### 0.4.4 - 2025-09-10
+* Remove border from current month
 #### 0.4.3 - 2025-09-09
 * Optimize override.css deployment
 #### 0.4.2 - 2025-09-09

@@ -9,7 +9,6 @@
 
 .flatpickr-current-month {
     background-color: var(--primary) !important;
-    border: 2px solid var(--secondary) !important;
 }
 
 .flatpickr-day {

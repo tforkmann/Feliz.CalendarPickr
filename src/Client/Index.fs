@@ -37,7 +37,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                 flatPickr.value (Some model.Date)
                 flatPickr.className "input"
                 flatPickr.title (Some "abc")
-                flatPickr.themeColors (primary = "#D50037", secondary = "#333F4C")
+                flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")
                 flatPickr.options [
                     option.allowInput true
                     option.clearable true
