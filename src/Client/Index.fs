@@ -6,19 +6,19 @@ open Feliz.FlatPickr
 open System
 open Fable.I18Next
 
-type Model = { Date: DateTimeOffset }
+type Model = { Date: DateTimeOffset option }
 
 type Msg =
     | SetStartDate of DateTimeOffset
     | SetEndDate of DateTimeOffset
 
 let init () =
-    { Date = DateTimeOffset.Now }, Cmd.none
+    { Date = Some DateTimeOffset.Now }, Cmd.none
 
 let update msg (model: Model) =
     match msg with
-    | SetStartDate date -> { model with Date = date }, Cmd.none
-    | SetEndDate date -> { model with Date = date }, Cmd.none
+    | SetStartDate date -> { model with Date = Some date }, Cmd.none
+    | SetEndDate date -> { model with Date = Some date }, Cmd.none
 
 let view (model: Model) (dispatch: Msg -> unit) =
     // let format = "d.m.Y H:i"
@@ -29,13 +29,13 @@ let view (model: Model) (dispatch: Msg -> unit) =
         prop.children [
             FlatPickr.flatPickr [
                 flatPickr.disabled false
-                flatPickr.value (Some model.Date)
+                flatPickr.value model.Date
                 flatPickr.options [ option.allowInput true; option.clearable true ]
                 flatPickr.themeColors (primary = "#D50037", secondary = "#333F4C")
             ]
             FlatPickr.flatPickr [
                 flatPickr.disabled false
-                flatPickr.value (Some model.Date)
+                flatPickr.value model.Date
                 flatPickr.className "input"
                 flatPickr.title (Some "abc")
                 flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")
@@ -54,6 +54,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                             | "de" -> "de"
                             | _ -> "default"
                     )
+                    option.minDate (Some (DateTimeOffset.Now.AddDays(-7.0)))
                     option.disableMobile true
                 ]
 

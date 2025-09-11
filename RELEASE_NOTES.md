@@ -1,4 +1,4 @@
-#### 0.5.0 - 2025-09-11
+#### 0.5.1 - 2025-09-11
 * Add DateTimeOffset support
 #### 0.4.4 - 2025-09-10
 * Remove border from current month
