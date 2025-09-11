@@ -6,14 +6,14 @@ open Feliz.FlatPickr
 open System
 open Fable.I18Next
 
-type Model = { Date: DateTime }
+type Model = { Date: DateTimeOffset }
 
 type Msg =
-    | SetStartDate of DateTime
-    | SetEndDate of DateTime
+    | SetStartDate of DateTimeOffset
+    | SetEndDate of DateTimeOffset
 
 let init () =
-    { Date = DateTime(2019, 1, 1) }, Cmd.none
+    { Date = DateTimeOffset.Now }, Cmd.none
 
 let update msg (model: Model) =
     match msg with
@@ -21,7 +21,8 @@ let update msg (model: Model) =
     | SetEndDate date -> { model with Date = date }, Cmd.none
 
 let view (model: Model) (dispatch: Msg -> unit) =
-    let format = "d.m.Y H:i"
+    // let format = "d.m.Y H:i"
+    let format = "d.m.Y"
 
     Html.div [
         prop.style [ style.height 600; style.width 600 ]

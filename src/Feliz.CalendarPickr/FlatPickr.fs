@@ -21,6 +21,7 @@ type FlatPickr =
 type flatPickr =
 
     static member inline value(value: DateTime option) : IFlatPickrProp = Interop.mkFlatPickrProp "value" value
+    static member inline value(value: DateTimeOffset option) : IFlatPickrProp = Interop.mkFlatPickrProp "value" value
 
     static member inline className(className: string) : IFlatPickrProp =
         Interop.mkFlatPickrProp "className" className
