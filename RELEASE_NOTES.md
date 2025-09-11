@@ -1,4 +1,4 @@
-#### 0.5.2 - 2025-09-11
+#### 0.5.3 - 2025-09-11
 * Introduce DateOption type to unify DateTime and DateTimeOffset handling
 #### 0.5.1 - 2025-09-11
 * Add DateTimeOffset support

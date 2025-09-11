@@ -15,6 +15,10 @@
     color: var(--secondary) !important;
 }
 
+.flatpickr-disabled {
+    color: grey !important;
+}
+
 .flatpickr-day.selected,
 .flatpickr-day.selected:hover {
     background-color: var(--primary) !important;

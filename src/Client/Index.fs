@@ -54,7 +54,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                             | "de" -> "de"
                             | _ -> "default"
                     )
-                    // option.minDate (Some (DateTimeOffset.Now.AddDays(-7.0)))
+                    option.maxDate (DateOption.Date model.Date)
                     option.disableMobile true
                 ]
 
