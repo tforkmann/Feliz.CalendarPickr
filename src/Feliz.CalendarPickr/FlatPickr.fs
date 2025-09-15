@@ -37,7 +37,7 @@ type flatPickr =
             root?style?setProperty("--primary", primaryColor)
             root?style?setProperty("--secondary", secondaryColor)
         Interop.mkFlatPickrProp "themeColors" null
-    static member inline onChange(callback: DateTimeOffset[] -> Event -> unit) : IFlatPickrProp =
+    static member inline onChange(callback: DateTimeOffset [] * string * obj -> unit) : IFlatPickrProp =
         Interop.mkFlatPickrProp "onChange" callback
 
     static member inline disabled(disabled: bool) : IFlatPickrProp =

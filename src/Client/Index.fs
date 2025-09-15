@@ -30,14 +30,13 @@ let view (model: Model) (dispatch: Msg -> unit) =
             FlatPickr.flatPickr [
                 flatPickr.disabled false
                 flatPickr.value (DateOption.Date model.Date)
-                flatPickr.options [ option.allowInput true; option.clearable true ]
-                flatPickr.themeColors (primary = "#D50037", secondary = "#333F4C")
-            ]
-            FlatPickr.flatPickr [
-                flatPickr.disabled false
-                flatPickr.value (DateOption.Date model.Date)
                 flatPickr.className "input"
                 flatPickr.title (Some "abc")
+                flatPickr.onChange (fun (dates, string, instance) ->
+                    printfn "%A" dates
+                    if dates.Length > 0 then
+                        dispatch (SetStartDate dates[0].Date)
+                )
                 flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")
                 flatPickr.options [
                     option.allowInput true
@@ -47,13 +46,8 @@ let view (model: Model) (dispatch: Msg -> unit) =
                         format.IndexOfAny [| 'd'; 'D'; 'l'; 'j'; 'J'; 'w'; 'W'; 'F'; 'm'; 'n'; 'M'; 'y'; 'Y' |] = -1
                     )
                     option.dateFormat format
-                    option.time_24hr (not (format.Contains("K")))
-                    option.locale (
-                        I18n.GetLanguage()
-                        |> function
-                            | "de" -> "de"
-                            | _ -> "default"
-                    )
+                    option.time_24hr (not (format.Contains "K"))
+                    option.locale "de"
                     option.maxDate (DateOption.Date model.Date)
                     option.disableMobile true
                 ]
