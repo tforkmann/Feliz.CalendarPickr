@@ -11,5 +11,8 @@ module Interop =
 
     importSideEffects "flatpickr/dist/themes/material_green.css"
     importSideEffects "flatpickr/dist/l10n/de.js"
+    importSideEffects "./clearbutton.js"
     importSideEffects "./override.css"
     let flatPickr: obj = importDefault "react-flatpickr"
+    let attachClearButton: obj -> unit = import "attachClearButton" "./clearbutton.js"
+
