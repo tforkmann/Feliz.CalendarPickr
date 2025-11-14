@@ -2,6 +2,7 @@ namespace Feliz.FlatPickr
 
 open System
 open Fable.Core
+open Fable.Core.JsInterop
 
 [<Erase>]
 type option =

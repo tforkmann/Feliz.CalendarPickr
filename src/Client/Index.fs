@@ -10,7 +10,8 @@ open Fable.Core.JsInterop
 type Model = {
     MinDate : DateTimeOffset option
     Today: DateTimeOffset
-    MaxDate: DateTimeOffset option }
+    MaxDate: DateTimeOffset option
+    }
 
 type Msg =
     | SetStartDate of DateTimeOffset
@@ -28,12 +29,11 @@ let update msg (model: Model) =
     | SetStartDate date -> { model with Today = date }, Cmd.none
     | SetEndDate date -> { model with Today = date }, Cmd.none
 
-let private renderWithClearButton: obj * obj -> ReactElement =
-    fun (args, ref) ->
+let renderWithClearButton (args,ref) =
         Html.div [
             Html.input [
                 prop.custom ("ref", ref)
-                prop.defaultValue (unbox<string> args?defaultValue)
+                // prop.value    (unbox<string> args?defaultValue)
                 prop.className "flatpickr-input"
             ]
             Html.button [
@@ -65,6 +65,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                 flatPickr.className "input"
                 flatPickr.title (Some "abc")
                 flatPickr.onChange (fun (dates, string, instance) ->
+                    printfn "inputs %A, %s" dates string
                     if dates.Length > 0 then
                         dispatch (SetStartDate dates[0]))
                 flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")

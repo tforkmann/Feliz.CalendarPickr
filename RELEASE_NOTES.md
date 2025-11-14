@@ -1,3 +1,5 @@
+#### 0.5.6 - 2025-11-14
+* Add defaultDate property
 #### 0.5.5 - 2025-11-13
 * Make minDate and maxDate optional
 #### 0.5.4 - 2025-10-09
