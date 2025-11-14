@@ -41,8 +41,23 @@ type flatPickr =
             root?style?setProperty("--secondary", secondaryColor)
         Interop.mkFlatPickrProp "themeColors" null
 
-    static member inline onChange(callback: DateTimeOffset [] * string * obj -> unit) : IFlatPickrProp =
-        Interop.mkFlatPickrProp "onChange" callback
+    static member inline onChange
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onChange"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    // static member inline onReady
+    //     (callback: DateTimeOffset[] * string * obj -> unit)
+    //     : IFlatPickrProp =
+    //     Interop.mkFlatPickrProp "onReady"
+    //         (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+    //             let parsed = dates |> Array.map unbox<DateTimeOffset>
+    //             callback(parsed, dateStr, instance)
+    //         ))
 
     static member inline disabled(disabled: bool) : IFlatPickrProp =
         Interop.mkFlatPickrProp "disabled" disabled

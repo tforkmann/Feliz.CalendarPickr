@@ -1,3 +1,5 @@
+#### 0.5.8 - 2025-11-14
+* Fix onChange event
 #### 0.5.7 - 2025-11-14
 * Move defaultDate to Options
 #### 0.5.6 - 2025-11-14

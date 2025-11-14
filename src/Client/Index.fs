@@ -53,40 +53,61 @@ let renderWithClearButton (args,ref) =
             ]
         ]
 
+[<ReactComponent>]
+let FlatPickrControl (value: DateTimeOffset) (onChange: DateTimeOffset -> unit) =
+
+
+    FlatPickr.flatPickr [
+        flatPickr.className "input"
+
+        // // store FP instance ONCE
+        // flatPickr.onReady (fun (_dates, _str, instance) ->
+        //     instanceRef.current <- Some instance
+        // )
+
+        flatPickr.onChange (fun (dates, _str, _instance) ->
+            if dates.Length > 0 then
+                let d = dates.[0]
+                printfn "Selected date: %A" d
+                let norm = DateTimeOffset(d.Year, d.Month, d.Day, d.Hour, d.Minute, 0, d.Offset)
+                onChange norm
+        )
+        flatPickr.options [
+            option.dateFormat "d.m.Y H:i"
+            option.allowInput true
+            option.enableTime true
+            option.time_24hr true
+            option.locale "de"
+            option.defaultDate (DateOption.DateTimeOffset value)
+        ]
+    ]
+
 let view (model: Model) (dispatch: Msg -> unit) =
-    // let format = "d.m.Y H:i"
-    let format = "d.m.Y"
 
     Html.div [
         prop.style [ style.height 600; style.width 600 ]
         prop.children [
+            Html.h1 (sprintf "current Start Date: %A" model.Today)
             FlatPickr.flatPickr [
-                flatPickr.disabled false
                 flatPickr.className "input"
-                flatPickr.title (Some "abc")
-                flatPickr.onChange (fun (dates, string, instance) ->
-                    printfn "inputs %A, %s" dates string
+
+                // // store FP instance ONCE
+                // flatPickr.onReady (fun (_dates, _str, instance) ->
+                //     instanceRef.current <- Some instance
+                // )
+
+                flatPickr.onChange (fun (dates, _str, _instance) ->
                     if dates.Length > 0 then
-                        dispatch (SetStartDate dates[0]))
-                flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")
-                flatPickr.showClearButton true
-                // flatPickr.render (fun (args, ref) -> renderWithClearButton (args, ref))
+                        dispatch (SetStartDate dates.[0])
+                )
                 flatPickr.options [
+                    option.dateFormat "d.m.Y H:i"
                     option.allowInput true
-                    option.clearable true
-                    option.enableTime (format.IndexOfAny [| 'H'; 'h'; 'G'; 'i'; 'S'; 's'; 'K' |] <> -1)
-                    option.noCalendar (
-                        format.IndexOfAny [| 'd'; 'D'; 'l'; 'j'; 'J'; 'w'; 'W'; 'F'; 'm'; 'n'; 'M'; 'y'; 'Y' |] = -1
-                    )
-                    option.dateFormat format
-                    option.defaultDate (DateOption.DateTimeOffset model.Today)
-                    option.time_24hr (not (format.Contains "K"))
+                    option.enableTime true
+                    option.time_24hr true
                     option.locale "de"
-                    option.maxDate (model.MaxDate |> Option.map DateOption.DateTimeOffset )
-                    option.minDate (model.MinDate |> Option.map DateOption.DateTimeOffset)
-                    option.disableMobile true
+                    option.defaultDate (DateOption.DateTimeOffset model.Today)
                 ]
             ]
-
         ]
     ]
