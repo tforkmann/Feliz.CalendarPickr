@@ -30,3 +30,5 @@ type option =
         Interop.mkOptionsProp "noCalendar" noCalendar
     static member inline enableTime(enableTime: bool) : IOptionsProp =
         Interop.mkOptionsProp "enableTime" enableTime
+    static member inline defaultDate(date: DateOption) : IOptionsProp = Interop.mkOptionsProp "defaultDate" date.Value
+    static member inline defaultDates(dates: DateOption seq) : IOptionsProp = Interop.mkOptionsProp "defaultDate" (dates |> Seq.map (fun d -> d.Value) |> Seq.toArray)

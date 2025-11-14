@@ -34,6 +34,7 @@ let renderWithClearButton (args,ref) =
             Html.input [
                 prop.custom ("ref", ref)
                 // prop.value    (unbox<string> args?defaultValue)
+                prop.defaultValue (args?defaultValue |> unbox<string>)
                 prop.className "flatpickr-input"
             ]
             Html.button [
@@ -61,7 +62,6 @@ let view (model: Model) (dispatch: Msg -> unit) =
         prop.children [
             FlatPickr.flatPickr [
                 flatPickr.disabled false
-                flatPickr.value (DateOption.DateTimeOffset model.Today)
                 flatPickr.className "input"
                 flatPickr.title (Some "abc")
                 flatPickr.onChange (fun (dates, string, instance) ->
@@ -70,7 +70,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                         dispatch (SetStartDate dates[0]))
                 flatPickr.themeColors (primary = "#93C90E", secondary = "#000000")
                 flatPickr.showClearButton true
-                flatPickr.render (fun (args, ref) -> renderWithClearButton (args, ref))
+                // flatPickr.render (fun (args, ref) -> renderWithClearButton (args, ref))
                 flatPickr.options [
                     option.allowInput true
                     option.clearable true
@@ -79,6 +79,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                         format.IndexOfAny [| 'd'; 'D'; 'l'; 'j'; 'J'; 'w'; 'W'; 'F'; 'm'; 'n'; 'M'; 'y'; 'Y' |] = -1
                     )
                     option.dateFormat format
+                    option.defaultDate (DateOption.DateTimeOffset model.Today)
                     option.time_24hr (not (format.Contains "K"))
                     option.locale "de"
                     option.maxDate (model.MaxDate |> Option.map DateOption.DateTimeOffset )

@@ -1,3 +1,5 @@
+#### 0.5.7 - 2025-11-14
+* Move defaultDate to Options
 #### 0.5.6 - 2025-11-14
 * Add defaultDate property
 #### 0.5.5 - 2025-11-13
