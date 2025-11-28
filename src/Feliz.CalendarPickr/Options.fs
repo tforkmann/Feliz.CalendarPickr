@@ -32,3 +32,23 @@ type option =
         Interop.mkOptionsProp "enableTime" enableTime
     static member inline defaultDate(date: DateOption) : IOptionsProp = Interop.mkOptionsProp "defaultDate" date.Value
     static member inline defaultDates(dates: DateOption seq) : IOptionsProp = Interop.mkOptionsProp "defaultDate" (dates |> Seq.map (fun d -> d.Value) |> Seq.toArray)
+
+    /// Selection mode: Single (default), Range, or Multiple
+    static member inline mode(mode: Mode) : IOptionsProp =
+        Interop.mkOptionsProp "mode" mode.Value
+
+    /// Shorthand for mode Range - enables date range selection
+    static member inline enableRange : IOptionsProp =
+        Interop.mkOptionsProp "mode" "range"
+
+    /// Shorthand for mode Multiple - enables multiple date selection
+    static member inline enableMultiple : IOptionsProp =
+        Interop.mkOptionsProp "mode" "multiple"
+
+    /// Date separator for range mode (default: " to ")
+    static member inline rangeSeparator(separator: string) : IOptionsProp =
+        Interop.mkOptionsProp "rangeSeparator" separator
+
+    /// Number of months to show (useful for range mode)
+    static member inline showMonths(months: int) : IOptionsProp =
+        Interop.mkOptionsProp "showMonths" months

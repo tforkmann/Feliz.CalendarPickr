@@ -50,6 +50,29 @@ type flatPickr =
                 callback(parsed, dateStr, instance)
             ))
 
+    /// Callback for range mode - provides start and end date when both are selected
+    /// Only fires when both dates are selected (range is complete)
+    static member inline onRangeChange
+        (callback: (DateTimeOffset * DateTimeOffset) option -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onChange"
+            (System.Func<obj[], string, obj, unit>(fun dates _ _ ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                match parsed with
+                | [| startDate; endDate |] -> callback (Some (startDate, endDate))
+                | _ -> callback None
+            ))
+
+    /// Callback for multiple mode - provides all selected dates
+    static member inline onMultipleChange
+        (callback: DateTimeOffset[] -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onChange"
+            (System.Func<obj[], string, obj, unit>(fun dates _ _ ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback parsed
+            ))
+
     // static member inline onReady
     //     (callback: DateTimeOffset[] * string * obj -> unit)
     //     : IFlatPickrProp =
