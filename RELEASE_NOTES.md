@@ -1,3 +1,12 @@
+#### 0.6.0 - 2025-11-28
+* Add range mode support with `FlatPickr.option.mode`, `FlatPickr.option.enableRange`
+* Add multiple selection mode with `FlatPickr.option.enableMultiple`
+* Add `flatPickr.onRangeChange` callback for range selection
+* Add `flatPickr.onMultipleChange` callback for multiple date selection
+* Add `FlatPickr.option.rangeSeparator` for customizing range display
+* Add `FlatPickr.option.showMonths` for displaying multiple months
+* Add `Mode` discriminated union type (Single, Range, Multiple)
+
 #### 0.5.8 - 2025-11-14
 * Fix onChange event
 #### 0.5.7 - 2025-11-14

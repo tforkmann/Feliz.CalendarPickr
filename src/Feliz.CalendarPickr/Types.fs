@@ -12,6 +12,21 @@ type IOptionsProp =
     interface
     end
 
+/// FlatPickr selection mode
+[<RequireQualifiedAccess>]
+type Mode =
+    /// Single date/time selection (default)
+    | Single
+    /// Select a date range (two dates)
+    | Range
+    /// Select multiple dates
+    | Multiple
+    member this.Value =
+        match this with
+        | Single -> "single"
+        | Range -> "range"
+        | Multiple -> "multiple"
+
 [<RequireQualifiedAccess>]
 type DateOption =
 | Date of System.DateTime

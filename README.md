@@ -43,4 +43,56 @@ let FlatPickr date =
 
 ```
 
+## Date Range Picker
+Select a date range (start and end date):
+```fs
+[<ReactComponent>]
+let DateRangePicker () =
+    let range, setRange = React.useState<(DateTimeOffset * DateTimeOffset) option>(None)
+
+    FlatPickr.flatPickr [
+        flatPickr.onRangeChange setRange
+        flatPickr.options [
+            FlatPickr.option.enableRange        // Enable range mode
+            FlatPickr.option.showMonths 2       // Show 2 months side by side
+            FlatPickr.option.rangeSeparator " bis "  // German "to"
+            FlatPickr.option.dateFormat "d.m.Y"
+        ]
+    ]
+```
+
+## Time Range Picker
+Select a time range:
+```fs
+[<ReactComponent>]
+let TimeRangePicker () =
+    let range, setRange = React.useState<(DateTimeOffset * DateTimeOffset) option>(None)
+
+    FlatPickr.flatPickr [
+        flatPickr.onRangeChange setRange
+        flatPickr.options [
+            FlatPickr.option.enableRange
+            FlatPickr.option.enableTime true
+            FlatPickr.option.noCalendar true    // Time only, no date
+            FlatPickr.option.time_24hr true
+            FlatPickr.option.dateFormat "H:i"
+        ]
+    ]
+```
+
+## Multiple Date Selection
+Select multiple dates:
+```fs
+[<ReactComponent>]
+let MultipleDatePicker () =
+    let dates, setDates = React.useState<DateTimeOffset[]>([||])
+
+    FlatPickr.flatPickr [
+        flatPickr.onMultipleChange setDates
+        flatPickr.options [
+            FlatPickr.option.enableMultiple
+        ]
+    ]
+```
+
 You can find more examples [here](https://tforkmann.github.io/Feliz.FlatPickr/)
