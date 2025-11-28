@@ -11,23 +11,33 @@ type Model = {
     MinDate : DateTimeOffset option
     Today: DateTimeOffset
     MaxDate: DateTimeOffset option
+    // Range Mode
+    RangeStart: DateTimeOffset option
+    RangeEnd: DateTimeOffset option
     }
 
 type Msg =
     | SetStartDate of DateTimeOffset
     | SetEndDate of DateTimeOffset
+    | SetRange of (DateTimeOffset * DateTimeOffset) option
 
 let today = DateTimeOffset.Now
 
 let init () = {
     MinDate = today.AddDays -10.0 |> Some
     Today = today
-    MaxDate = today.AddDays 10.0  |> Some }, Cmd.none
+    MaxDate = today.AddDays 10.0  |> Some
+    RangeStart = None
+    RangeEnd = None }, Cmd.none
 
 let update msg (model: Model) =
     match msg with
     | SetStartDate date -> { model with Today = date }, Cmd.none
     | SetEndDate date -> { model with Today = date }, Cmd.none
+    | SetRange range ->
+        match range with
+        | Some (startDate, endDate) -> { model with RangeStart = Some startDate; RangeEnd = Some endDate }, Cmd.none
+        | None -> { model with RangeStart = None; RangeEnd = None }, Cmd.none
 
 let renderWithClearButton (args,ref) =
         Html.div [
@@ -85,16 +95,11 @@ let FlatPickrControl (value: DateTimeOffset) (onChange: DateTimeOffset -> unit) 
 let view (model: Model) (dispatch: Msg -> unit) =
 
     Html.div [
-        prop.style [ style.height 600; style.width 600 ]
+        prop.style [ style.height 600; style.width 800 ]
         prop.children [
             Html.h1 (sprintf "current Start Date: %A" model.Today)
             FlatPickr.flatPickr [
                 flatPickr.className "input"
-
-                // // store FP instance ONCE
-                // flatPickr.onReady (fun (_dates, _str, instance) ->
-                //     instanceRef.current <- Some instance
-                // )
 
                 flatPickr.onChange (fun (dates, _str, _instance) ->
                     if dates.Length > 0 then
@@ -107,6 +112,28 @@ let view (model: Model) (dispatch: Msg -> unit) =
                     option.time_24hr true
                     option.locale "de"
                     option.defaultDate (DateOption.DateTimeOffset model.Today)
+                ]
+            ]
+
+            Html.hr []
+
+            // Range Mode
+            Html.h2 "Range Mode"
+            Html.p (
+                match model.RangeStart, model.RangeEnd with
+                | Some startDate, Some endDate ->
+                    sprintf "Selected Range: %s - %s" (startDate.ToString("dd.MM.yyyy")) (endDate.ToString("dd.MM.yyyy"))
+                | _ -> "No range selected"
+            )
+            FlatPickr.flatPickr [
+                flatPickr.className "input"
+                flatPickr.onRangeChange (fun range -> dispatch (SetRange range))
+                flatPickr.options [
+                    option.enableRange
+                    option.dateFormat "d.m.Y"
+                    option.locale "de"
+                    option.showMonths 2
+                    option.rangeSeparator " bis "
                 ]
             ]
         ]
