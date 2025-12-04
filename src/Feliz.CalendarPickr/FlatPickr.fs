@@ -73,14 +73,38 @@ type flatPickr =
                 callback parsed
             ))
 
-    // static member inline onReady
-    //     (callback: DateTimeOffset[] * string * obj -> unit)
-    //     : IFlatPickrProp =
-    //     Interop.mkFlatPickrProp "onReady"
-    //         (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
-    //             let parsed = dates |> Array.map unbox<DateTimeOffset>
-    //             callback(parsed, dateStr, instance)
-    //         ))
+    /// Callback fired when the calendar is ready and instance is created
+    /// Provides the selected dates array, date string, and flatpickr instance
+    static member inline onReady
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onReady"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    /// Callback fired when the calendar is opened
+    /// Provides the selected dates array, date string, and flatpickr instance
+    static member inline onOpen
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onOpen"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    /// Callback fired when the calendar is closed
+    /// Provides the selected dates array, date string, and flatpickr instance
+    static member inline onClose
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onClose"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
 
     static member inline disabled(disabled: bool) : IFlatPickrProp =
         Interop.mkFlatPickrProp "disabled" disabled
