@@ -42,7 +42,6 @@ let FlatPickr (state: State) (dispatch: Msg -> unit) =
                 option.clearable true
             ]
             flatPickr.themeColors(primary="#D50037", secondary="#333F4C")
-
         ]
         ]
     ]
@@ -58,7 +57,16 @@ let code =
             option.clearable true
         ]
         flatPickr.themeColors(primary="#D50037", secondary="#333F4C")
-
+        // Event callbacks (available in v0.7.0+)
+        flatPickr.onReady (fun (dates, dateStr, instance) ->
+            // Calendar is ready
+        )
+        flatPickr.onOpen (fun (dates, dateStr, instance) ->
+            // Calendar opened
+        )
+        flatPickr.onClose (fun (dates, dateStr, instance) ->
+            // Calendar closed
+        )
     ]
     """
 

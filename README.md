@@ -95,4 +95,31 @@ let MultipleDatePicker () =
     ]
 ```
 
+## Event Callbacks
+Handle calendar lifecycle events:
+```fs
+[<ReactComponent>]
+let FlatPickrWithEvents () =
+    FlatPickr.flatPickr [
+        flatPickr.onReady (fun (dates, dateStr, instance) ->
+            printfn "Calendar ready with %d dates" dates.Length
+        )
+        flatPickr.onOpen (fun (dates, dateStr, instance) ->
+            printfn "Calendar opened"
+        )
+        flatPickr.onClose (fun (dates, dateStr, instance) ->
+            printfn "Calendar closed with selection: %s" dateStr
+        )
+        flatPickr.onChange (fun (dates, dateStr, instance) ->
+            printfn "Date changed to: %s" dateStr
+        )
+    ]
+```
+
+Available event callbacks:
+- `flatPickr.onReady` - Fired when the calendar is ready and instance is created
+- `flatPickr.onOpen` - Fired when the calendar is opened
+- `flatPickr.onClose` - Fired when the calendar is closed
+- `flatPickr.onChange` - Fired when a date is selected
+
 You can find more examples [here](https://tforkmann.github.io/Feliz.FlatPickr/)
