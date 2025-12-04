@@ -1,3 +1,5 @@
+#### 0.7.0 - 2025-12-04
+* Add onReady, onOpen, and onClose event callbacks
 #### 0.6.0 - 2025-11-28
 * Add range mode support with `FlatPickr.option.mode`, `FlatPickr.option.enableRange`
 * Add multiple selection mode with `FlatPickr.option.enableMultiple`
