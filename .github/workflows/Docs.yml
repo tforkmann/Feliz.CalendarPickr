@@ -35,11 +35,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
       - name: Download app artifact
         uses: actions/download-artifact@v4
         with:
           name: docs
           path: docs
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
