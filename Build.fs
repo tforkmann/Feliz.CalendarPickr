@@ -28,13 +28,13 @@ let release = ReleaseNotes.load "RELEASE_NOTES.md"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-let gitHome = "https://github"
+let gitHome = "https://github.com/tforkmann"
 // The name of the project on GitHub
-let gitName = "Feliz.CalendarPickr"
+let gitName = "Feliz.FlatPickr"
 
 // The name of the project
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
-let projectName = "Feliz.CalendarPickr"
+let projectName = "Feliz.FlatPickr"
 
 let projectUrl = sprintf "%s/%s" gitHome gitName
 

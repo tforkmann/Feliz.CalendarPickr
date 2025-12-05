@@ -55,18 +55,40 @@ let code =
         flatPickr.options [
             option.allowInput true
             option.clearable true
+            // v1.0 options
+            option.weekNumbers true
+            option.altInput true
+            option.altFormat "F j, Y"
+            option.position "below"
         ]
         flatPickr.themeColors(primary="#D50037", secondary="#333F4C")
-        // Event callbacks (available in v0.7.0+)
-        flatPickr.onReady (fun (dates, dateStr, instance) ->
-            // Calendar is ready
-        )
-        flatPickr.onOpen (fun (dates, dateStr, instance) ->
-            // Calendar opened
-        )
-        flatPickr.onClose (fun (dates, dateStr, instance) ->
-            // Calendar closed
-        )
+        // Event callbacks
+        flatPickr.onReady (fun (dates, dateStr, instance) -> ())
+        flatPickr.onOpen (fun (dates, dateStr, instance) -> ())
+        flatPickr.onClose (fun (dates, dateStr, instance) -> ())
+        flatPickr.onMonthChange (fun (dates, dateStr, instance) -> ())
+        flatPickr.onYearChange (fun (dates, dateStr, instance) -> ())
+    ]
+
+    // Disable weekends example
+    FlatPickr.flatPickr [
+        flatPickr.options [
+            option.disableBy (fun date ->
+                date.DayOfWeek = DayOfWeek.Saturday ||
+                date.DayOfWeek = DayOfWeek.Sunday
+            )
+        ]
+    ]
+
+    // Time picker with seconds
+    FlatPickr.flatPickr [
+        flatPickr.options [
+            option.enableTime true
+            option.enableSeconds true
+            option.hourIncrement 1
+            option.minuteIncrement 15
+            option.time_24hr true
+        ]
     ]
     """
 

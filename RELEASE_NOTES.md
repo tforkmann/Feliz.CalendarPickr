@@ -1,3 +1,35 @@
+#### 1.0.0 - 2025-12-05
+* **Full feature parity with flatpickr options**
+* Display & UI options:
+  - `weekNumbers` - Show week numbers in calendar
+  - `shorthandCurrentMonth` - Show month shorthand (e.g., "Jan")
+  - `monthSelectorType` - Month selector style ("dropdown" or "static")
+  - `altInput`, `altFormat`, `altInputClass` - User-friendly date display
+  - `ariaDateFormat` - Accessibility date format
+* Position options:
+  - `position` - Calendar position (auto, above, below, etc.)
+  - `static'` - Position calendar next to input
+  - `appendTo` - Attach calendar to specific DOM element
+* Arrow customization:
+  - `prevArrow`, `nextArrow` - Custom navigation icons
+* Time options:
+  - `enableSeconds` - Enable seconds in time picker
+  - `hourIncrement`, `minuteIncrement` - Time input steps
+  - `defaultHour`, `defaultMinute`, `defaultSeconds` - Initial time values
+* Behavior options:
+  - `clickOpens` - Control whether clicking opens the picker
+  - `allowInvalidPreload` - Allow preloading invalid dates
+  - `wrap` - Enable custom input groups with data attributes
+  - `conjunction` - Separator for multiple mode
+* Date constraints:
+  - `disable`, `disableDates`, `disableBy`, `disableRanges` - Disable dates
+  - `enable`, `enableDates`, `enableBy`, `enableRanges` - Enable only specific dates
+* New event callbacks:
+  - `onMonthChange` - Fired when month changes
+  - `onYearChange` - Fired when year changes
+  - `onValueUpdate` - Fired when input value updates
+  - `onDayCreate` - Full control over day cell elements
+
 #### 0.9.0 - 2025-12-05
 * BREAKING: Remove hardcoded material_green.css theme import
 * Import base flatpickr.css instead, allowing users to apply their own theme or override colors via CSS variables

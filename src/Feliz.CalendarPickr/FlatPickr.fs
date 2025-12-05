@@ -106,6 +106,50 @@ type flatPickr =
                 callback(parsed, dateStr, instance)
             ))
 
+    /// Callback fired when the month changes (user action or programmatic)
+    /// Provides the selected dates array, date string, and flatpickr instance
+    static member inline onMonthChange
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onMonthChange"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    /// Callback fired when the year changes (user action or programmatic)
+    /// Provides the selected dates array, date string, and flatpickr instance
+    static member inline onYearChange
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onYearChange"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    /// Callback fired when input value updates with new date string
+    /// Fires more frequently than onChange
+    static member inline onValueUpdate
+        (callback: DateTimeOffset[] * string * obj -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onValueUpdate"
+            (System.Func<obj[], string, obj, unit>(fun dates dateStr instance ->
+                let parsed = dates |> Array.map unbox<DateTimeOffset>
+                callback(parsed, dateStr, instance)
+            ))
+
+    /// Callback for full control of every date cell element
+    /// Provides the date object, date string, flatpickr instance, and the day element
+    static member inline onDayCreate
+        (callback: DateTimeOffset * string * obj * Browser.Types.HTMLElement -> unit)
+        : IFlatPickrProp =
+        Interop.mkFlatPickrProp "onDayCreate"
+            (System.Func<obj[], string, obj, Browser.Types.HTMLElement, unit>(fun dates dateStr instance dayElem ->
+                let date = if dates.Length > 0 then unbox<DateTimeOffset> dates.[0] else DateTimeOffset.MinValue
+                callback(date, dateStr, instance, dayElem)
+            ))
+
     static member inline disabled(disabled: bool) : IFlatPickrProp =
         Interop.mkFlatPickrProp "disabled" disabled
 
