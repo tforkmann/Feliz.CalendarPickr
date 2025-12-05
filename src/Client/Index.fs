@@ -101,6 +101,9 @@ let view (model: Model) (dispatch: Msg -> unit) =
             FlatPickr.flatPickr [
                 flatPickr.className "input"
 
+                flatPickr.onReady (fun (dates, dateStr, instance) ->
+                    printfn "Calendar ready with %d dates, dateStr: %s" dates.Length dateStr
+                )
                 flatPickr.onChange (fun (dates, _str, _instance) ->
                     if dates.Length > 0 then
                         dispatch (SetStartDate dates.[0])
