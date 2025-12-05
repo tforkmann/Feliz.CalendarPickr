@@ -1,3 +1,6 @@
+#### 0.8.0 - 2025-12-05
+* Add `option.inline'` for displaying calendar inline (always visible)
+
 #### 0.7.0 - 2025-12-04
 * Add onReady, onOpen, and onClose event callbacks
 #### 0.6.0 - 2025-11-28

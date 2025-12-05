@@ -52,3 +52,7 @@ type option =
     /// Number of months to show (useful for range mode)
     static member inline showMonths(months: int) : IOptionsProp =
         Interop.mkOptionsProp "showMonths" months
+
+    /// Display the calendar inline (always visible)
+    static member inline inline'(value: bool) : IOptionsProp =
+        Interop.mkOptionsProp "inline" value
