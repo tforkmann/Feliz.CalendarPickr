@@ -1,3 +1,8 @@
+#### 0.9.0 - 2025-12-05
+* BREAKING: Remove hardcoded material_green.css theme import
+* Import base flatpickr.css instead, allowing users to apply their own theme or override colors via CSS variables
+* This enables proper corporate design/white-label support where primary colors vary per tenant
+
 #### 0.8.0 - 2025-12-05
 * Add `option.inline'` for displaying calendar inline (always visible)
 

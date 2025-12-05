@@ -9,7 +9,9 @@ module Interop =
     let inline mkOptionsProp (key: string) (value: obj) : IOptionsProp = unbox (key, value)
     let inline mkStylesProp (key: string) (value: obj) : IFlatPickrStylesProp = unbox (key, value)
 
-    importSideEffects "flatpickr/dist/themes/material_green.css"
+    // Import base flatpickr CSS instead of hardcoded theme
+    // Users can import their own theme or override colors via CSS variables
+    importSideEffects "flatpickr/dist/flatpickr.css"
     importSideEffects "flatpickr/dist/l10n/de.js"
     importSideEffects "./clearbutton.js"
     importSideEffects "./override.css"
