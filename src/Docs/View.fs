@@ -121,6 +121,7 @@ let private leftSide (p: Page) =
                         mi "Install" Install
                         mi "Use" Use
                         mi "FlatPickr" Page.FlatPickr
+                        mi "Imperative FlatPickr" Page.ImperativeFlatPickr
                         ]
                 ]
             ]
@@ -155,6 +156,7 @@ let AppView (state: State) (dispatch: Msg -> unit) =
         | Install -> "Installation", "/docs/install", Pages.Install.InstallView()
         | Use -> "How to use", "/docs/use", Pages.Use.UseView()
         | FlatPickr -> "FlatPickr", "/FlatPickr", Pages.FlatPickrView.FlatPickrView()
+        | ImperativeFlatPickr -> "Imperative FlatPickr", "/ImperativeFlatPickr", Pages.ImperativeFlatPickrView.ImperativeFlatPickrView()
 
     React.router [
         router.hashMode

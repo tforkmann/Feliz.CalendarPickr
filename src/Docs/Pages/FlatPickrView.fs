@@ -36,7 +36,7 @@ let FlatPickr (state: State) (dispatch: Msg -> unit) =
         prop.children [
             FlatPickr.flatPickr [
             flatPickr.disabled false
-            flatPickr.value (Some now)
+            flatPickr.value (DateOption.Date now)
             flatPickr.options [
                 option.allowInput true
                 option.clearable true

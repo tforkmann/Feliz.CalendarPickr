@@ -8,6 +8,7 @@ type Page =
     | Install
     | Use
     | FlatPickr
+    | ImperativeFlatPickr
 
 [<RequireQualifiedAccess>]
 module Page =
@@ -17,6 +18,7 @@ module Page =
         function
         | [ "use" ] -> Use
         | [ "FlatPickr" ] -> FlatPickr
+        | [ "ImperativeFlatPickr" ] -> ImperativeFlatPickr
         | [] -> Install
         | _ -> defaultPage
 
@@ -26,6 +28,7 @@ module Page =
         function
         | Install -> [] |> noQueryString
         | FlatPickr -> ["FlatPickr"] |> noQueryString
+        | ImperativeFlatPickr -> ["ImperativeFlatPickr"] |> noQueryString
         | Use -> [ "use" ] |> noQueryString
 
 [<RequireQualifiedAccess>]

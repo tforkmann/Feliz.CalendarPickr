@@ -79,4 +79,26 @@ let UseView () =
                 Html.li [ Html.code [ prop.text "option.enableBy" ]; Html.text " - Enable only specific dates" ]
             ]
         ]
+
+        // Imperative FlatPickr
+        Html.divClassed "description mt-6" [
+            Html.h3 [ prop.className "text-xl font-bold"; prop.text "Imperative FlatPickr (v1.1.0)" ]
+        ]
+        Html.divClassed "description" [
+            Html.text "For scenarios requiring direct instance control, use "
+            Html.code [ prop.className "code"; prop.text "ImperativeFlatPickr" ]
+            Html.text " with "
+            Html.code [ prop.className "code"; prop.text "imperativeOption.*" ]
+            Html.text " options:"
+        ]
+        Html.ul [
+            prop.className "list-disc ml-6"
+            prop.children [
+                Html.li [ Html.code [ prop.text "ImperativeFlatPickr.useImperativeFlatPickr" ]; Html.text " - React hook for direct control" ]
+                Html.li [ Html.code [ prop.text "picker.SetDate" ]; Html.text " - Set date programmatically" ]
+                Html.li [ Html.code [ prop.text "picker.Clear" ]; Html.text " - Clear selection" ]
+                Html.li [ Html.code [ prop.text "picker.IsOpen" ]; Html.text " - Check if picker is open" ]
+                Html.li [ Html.code [ prop.text "picker.Instance" ]; Html.text " - Access raw flatpickr instance" ]
+            ]
+        ]
     ]

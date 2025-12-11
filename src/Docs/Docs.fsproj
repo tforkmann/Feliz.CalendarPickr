@@ -9,9 +9,13 @@
         <Compile Include="Pages\Install.fs" />
         <Compile Include="Pages\Use.fs" />
         <Compile Include="Pages\FlatPickrView.fs" />
+        <Compile Include="Pages\ImperativeFlatPickrView.fs" />
         <Compile Include="View.fs" />
         <Compile Include="App.fs" />
         <Content Include="index.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Feliz.CalendarPickr\Feliz.CalendarPickr.fsproj" />
     </ItemGroup>
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
