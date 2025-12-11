@@ -11,10 +11,12 @@
     <Compile Include="Interop.fs" />
     <Compile Include="Options.fs" />
     <Compile Include="FlatPickr.fs" />
+    <Compile Include="ImperativeFlatPickr.fs" />
   </ItemGroup>
   <PropertyGroup>
     <NpmDependencies>
       <NpmPackage Name="react-flatpickr" Version="gt 4.0.0 lt 4.9.9" ResolutionStrategy="Max" DevDependency="true" />
+      <NpmPackage Name="flatpickr" Version="gt 4.6.0" ResolutionStrategy="Max" DevDependency="true" />
     </NpmDependencies>
   </PropertyGroup>
   <ItemGroup>

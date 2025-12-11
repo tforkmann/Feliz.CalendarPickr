@@ -216,3 +216,7 @@ type option =
                 ])
             |> Seq.toArray
         Interop.mkOptionsProp "enable" jsRanges
+
+    /// Whether to close the calendar after selecting a date (default: true for single mode)
+    static member inline closeOnSelect(value: bool) : IOptionsProp =
+        Interop.mkOptionsProp "closeOnSelect" value
