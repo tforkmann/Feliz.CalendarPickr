@@ -12,6 +12,10 @@ type IOptionsProp =
     interface
     end
 
+type IImperativeOptionsProp =
+    interface
+    end
+
 /// FlatPickr selection mode
 [<RequireQualifiedAccess>]
 type Mode =

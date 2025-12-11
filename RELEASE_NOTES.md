@@ -1,3 +1,10 @@
+#### 1.1.0 - 2025-12-11
+* Add imperative flatpickr binding for direct instance control
+* New `ImperativeFlatPickr` module with React hook `useImperativeFlatPickr`
+* Provides direct control over flatpickr instance lifecycle (SetDate, Clear, IsOpen)
+* Alternative to react-flatpickr wrapper for scenarios requiring more control
+* Includes `useImperativeFlatPickrWithCallbackRefs` for stable callback references
+
 #### 1.0.0 - 2025-12-05
 * **Full feature parity with flatpickr options**
 * Display & UI options:

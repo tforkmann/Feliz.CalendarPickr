@@ -6,126 +6,7 @@ open Fable.Core.JsInterop
 open System
 open Browser.Types
 
-/// Props for imperative flatpickr initialization
-type IImperativeFlatPickrOptionProp = interface end
-
-/// Imperative flatpickr binding that directly initializes flatpickr on an input element.
-/// This avoids issues with react-flatpickr and provides more control over the instance lifecycle.
-[<Erase; RequireQualifiedAccess>]
-module ImperativeInterop =
-    let inline mkOptionProp (key: string) (value: obj) : IImperativeFlatPickrOptionProp = unbox (key, value)
-
-    /// Direct flatpickr import (not react-flatpickr)
-    let flatpickrModule: obj = importDefault "flatpickr"
-
-    /// German locale
-    let germanLocale: obj = importDefault "flatpickr/dist/l10n/de.js"
-
-/// Options for imperative flatpickr initialization
-[<Erase>]
-type imperativeOption =
-    /// Date format string (e.g., "d.m.Y H:i")
-    static member inline dateFormat(format: string) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "dateFormat" format
-
-    /// Enable time picker
-    static member inline enableTime(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "enableTime" value
-
-    /// Hide the calendar (time-only mode)
-    static member inline noCalendar(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "noCalendar" value
-
-    /// Use 24-hour time format
-    static member inline time_24hr(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "time_24hr" value
-
-    /// Disable mobile native pickers
-    static member inline disableMobile(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "disableMobile" value
-
-    /// Allow manual text input
-    static member inline allowInput(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "allowInput" value
-
-    /// Close on date selection
-    static member inline closeOnSelect(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "closeOnSelect" value
-
-    /// Display calendar inline
-    static member inline inline'(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "inline" value
-
-    /// Default date value
-    static member inline defaultDate(date: DateTimeOffset) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "defaultDate" date
-
-    /// Default date value (DateTime)
-    static member inline defaultDateDT(date: DateTime) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "defaultDate" date
-
-    /// Minimum selectable date
-    static member inline minDate(date: DateTimeOffset) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "minDate" date
-
-    /// Minimum selectable date (DateTime)
-    static member inline minDateDT(date: DateTime) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "minDate" date
-
-    /// Maximum selectable date
-    static member inline maxDate(date: DateTimeOffset) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "maxDate" date
-
-    /// Maximum selectable date (DateTime)
-    static member inline maxDateDT(date: DateTime) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "maxDate" date
-
-    /// Locale setting ("de" for German, "default" for English)
-    static member inline locale(locale: string) : IImperativeFlatPickrOptionProp =
-        let localeObj =
-            match locale with
-            | "de" -> ImperativeInterop.germanLocale?``default``?de
-            | _ -> JS.undefined
-        ImperativeInterop.mkOptionProp "locale" localeObj
-
-    /// onChange callback - fires when user selects a date
-    static member inline onChange(callback: DateTimeOffset array -> unit) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "onChange"
-            (fun (dates: DateTimeOffset array) (_: string) (_: obj) -> callback dates)
-
-    /// onOpen callback - fires when calendar opens
-    static member inline onOpen(callback: unit -> unit) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "onOpen"
-            (fun (_: DateTimeOffset array) (_: string) (_: obj) -> callback ())
-
-    /// onClose callback - fires when calendar closes
-    /// The instance parameter provides access to selectedDates
-    static member inline onClose(callback: DateTimeOffset array -> obj -> unit) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "onClose"
-            (fun (dates: DateTimeOffset array) (_: string) (instance: obj) -> callback dates instance)
-
-    /// Selection mode
-    static member inline mode(mode: Mode) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "mode" mode.Value
-
-    /// Show week numbers
-    static member inline weekNumbers(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "weekNumbers" value
-
-    /// Enable seconds in time picker
-    static member inline enableSeconds(value: bool) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "enableSeconds" value
-
-    /// Step for hour input
-    static member inline hourIncrement(value: int) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "hourIncrement" value
-
-    /// Step for minute input
-    static member inline minuteIncrement(value: int) : IImperativeFlatPickrOptionProp =
-        ImperativeInterop.mkOptionProp "minuteIncrement" value
-
-
-/// Hook result for useImperativeFlatPickr
+/// Hook result for ImperativeFlatPickr.useImperativeFlatPickr
 type ImperativeFlatPickrResult = {
     /// Ref to attach to the input element
     InputRef: IRefValue<HTMLInputElement option>
@@ -139,8 +20,111 @@ type ImperativeFlatPickrResult = {
     IsOpen: unit -> bool
 }
 
-/// React hook for imperative flatpickr initialization.
-/// This provides direct control over the flatpickr instance and avoids issues with react-flatpickr.
+/// Options for imperative flatpickr initialization (lowercase for Feliz-style)
+[<Erase>]
+type imperativeOption =
+    /// Date format string (e.g., "d.m.Y H:i")
+    static member inline dateFormat(format: string) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "dateFormat" format
+
+    /// Enable time picker
+    static member inline enableTime(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "enableTime" value
+
+    /// Hide the calendar (time-only mode)
+    static member inline noCalendar(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "noCalendar" value
+
+    /// Use 24-hour time format
+    static member inline time_24hr(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "time_24hr" value
+
+    /// Disable mobile native pickers
+    static member inline disableMobile(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "disableMobile" value
+
+    /// Allow manual text input
+    static member inline allowInput(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "allowInput" value
+
+    /// Close on date selection
+    static member inline closeOnSelect(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "closeOnSelect" value
+
+    /// Display calendar inline
+    static member inline inline'(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "inline" value
+
+    /// Default date value
+    static member inline defaultDate(date: DateTimeOffset) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "defaultDate" date
+
+    /// Default date value (DateTime)
+    static member inline defaultDateDT(date: DateTime) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "defaultDate" date
+
+    /// Minimum selectable date
+    static member inline minDate(date: DateTimeOffset) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "minDate" date
+
+    /// Minimum selectable date (DateTime)
+    static member inline minDateDT(date: DateTime) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "minDate" date
+
+    /// Maximum selectable date
+    static member inline maxDate(date: DateTimeOffset) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "maxDate" date
+
+    /// Maximum selectable date (DateTime)
+    static member inline maxDateDT(date: DateTime) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "maxDate" date
+
+    /// Locale setting ("de" for German, "default" for English)
+    static member inline locale(locale: string) : IImperativeOptionsProp =
+        let localeObj =
+            match locale with
+            | "de" -> Interop.germanLocale?``default``?de
+            | _ -> JS.undefined
+        Interop.mkImperativeOptionsProp "locale" localeObj
+
+    /// onChange callback - fires when user selects a date
+    static member inline onChange(callback: DateTimeOffset array -> unit) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "onChange"
+            (fun (dates: DateTimeOffset array) (_: string) (_: obj) -> callback dates)
+
+    /// onOpen callback - fires when calendar opens
+    static member inline onOpen(callback: unit -> unit) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "onOpen"
+            (fun (_: DateTimeOffset array) (_: string) (_: obj) -> callback ())
+
+    /// onClose callback - fires when calendar closes
+    /// The instance parameter provides access to selectedDates
+    static member inline onClose(callback: DateTimeOffset array -> obj -> unit) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "onClose"
+            (fun (dates: DateTimeOffset array) (_: string) (instance: obj) -> callback dates instance)
+
+    /// Selection mode
+    static member inline mode(mode: Mode) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "mode" mode.Value
+
+    /// Show week numbers
+    static member inline weekNumbers(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "weekNumbers" value
+
+    /// Enable seconds in time picker
+    static member inline enableSeconds(value: bool) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "enableSeconds" value
+
+    /// Step for hour input
+    static member inline hourIncrement(value: int) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "hourIncrement" value
+
+    /// Step for minute input
+    static member inline minuteIncrement(value: int) : IImperativeOptionsProp =
+        Interop.mkImperativeOptionsProp "minuteIncrement" value
+
+/// Imperative flatpickr binding that directly initializes flatpickr on an input element.
+/// This avoids issues with react-flatpickr and provides more control over the instance lifecycle.
 ///
 /// Usage:
 /// ```fsharp
@@ -163,7 +147,7 @@ type ImperativeFlatPickrResult = {
 type ImperativeFlatPickr =
     /// Creates an imperative flatpickr hook with the given options.
     /// Returns refs and helper functions to control the picker.
-    static member inline useImperativeFlatPickr(options: IImperativeFlatPickrOptionProp seq) : ImperativeFlatPickrResult =
+    static member inline useImperativeFlatPickr(options: IImperativeOptionsProp seq) : ImperativeFlatPickrResult =
         let inputRef = React.useRef<HTMLInputElement option>(None)
         let instanceRef = React.useRef<obj option>(None)
         let isInitializedRef = React.useRef false
@@ -175,7 +159,7 @@ type ImperativeFlatPickr =
                 | Some input, false ->
                     isInitializedRef.current <- true
                     let opts = createObj !!options
-                    let instance = ImperativeInterop.flatpickrModule$(input, opts)
+                    let instance = Interop.flatpickrModule$(input, opts)
                     instanceRef.current <- Some instance
                 | _ -> ()
             ),
@@ -204,7 +188,7 @@ type ImperativeFlatPickr =
 
         let isOpen () =
             instanceRef.current
-            |> Option.map (fun instance -> instance?isOpen :> bool)
+            |> Option.map (fun instance -> instance?isOpen : bool)
             |> Option.defaultValue false
 
         {
@@ -230,7 +214,7 @@ type ImperativeFlatPickr =
     ///     (Some (fun dates instance -> dispatch (CalendarClosed dates)))  // onClose
     /// ```
     static member inline useImperativeFlatPickrWithCallbackRefs
-        (options: IImperativeFlatPickrOptionProp seq)
+        (options: IImperativeOptionsProp seq)
         (onChange: (DateTimeOffset array -> unit) option)
         (onOpen: (unit -> unit) option)
         (onClose: (DateTimeOffset array -> obj -> unit) option)
@@ -271,7 +255,7 @@ type ImperativeFlatPickr =
                     baseOpts?onClose <- fun (dates: DateTimeOffset array) (_: string) (instance: obj) ->
                         onCloseRef.current |> Option.iter (fun cb -> cb dates instance)
 
-                    let instance = ImperativeInterop.flatpickrModule$(input, baseOpts)
+                    let instance = Interop.flatpickrModule$(input, baseOpts)
                     instanceRef.current <- Some instance
                 | _ -> ()
             ),
@@ -303,7 +287,7 @@ type ImperativeFlatPickr =
 
         let isOpen () =
             instanceRef.current
-            |> Option.map (fun instance -> instance?isOpen :> bool)
+            |> Option.map (fun instance -> instance?isOpen : bool)
             |> Option.defaultValue false
 
         {
