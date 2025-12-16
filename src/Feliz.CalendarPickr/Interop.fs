@@ -2,6 +2,7 @@ namespace Feliz.FlatPickr
 
 open Fable.Core
 open Fable.Core.JsInterop
+open Feliz
 
 [<Erase; RequireQualifiedAccess>]
 module Interop =
@@ -9,6 +10,8 @@ module Interop =
     let inline mkOptionsProp (key: string) (value: obj) : IOptionsProp = unbox (key, value)
     let inline mkStylesProp (key: string) (value: obj) : IFlatPickrStylesProp = unbox (key, value)
     let inline mkImperativeOptionsProp (key: string) (value: obj) : IImperativeOptionsProp = unbox (key, value)
+
+    let flatPickrElement: ReactElement = importDefault "react-flatpickr"
 
     /// Direct flatpickr import (not react-flatpickr)
     let flatpickrModule: obj = importDefault "flatpickr"
@@ -22,6 +25,5 @@ module Interop =
     importSideEffects "flatpickr/dist/l10n/de.js"
     importSideEffects "./clearbutton.js"
     importSideEffects "./override.css"
-    let flatPickr: obj = importDefault "react-flatpickr"
     let attachClearButton: obj -> unit = import "attachClearButton" "./clearbutton.js"
 
