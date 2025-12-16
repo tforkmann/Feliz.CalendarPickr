@@ -12,7 +12,7 @@ type Event = Browser.Types.Event
 type FlatPickr =
 
     static member inline flatPickr(props: IFlatPickrProp seq) =
-        Interop.reactApi.createElement (Interop.flatPickr, createObj !!props)
+        ReactLegacy.createElement (Interop.flatPickrElement, createObj !!props)
 
     static member inline children(children: ReactElement list) =
         unbox<IFlatPickrProp> (prop.children children)
