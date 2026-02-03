@@ -31,6 +31,18 @@ type Mode =
         | Range -> "range"
         | Multiple -> "multiple"
 
+/// Calendar locale for flatpickr
+[<RequireQualifiedAccess>]
+type Locale =
+    /// German
+    | German
+    /// English (default)
+    | English
+    /// French
+    | French
+    /// Italian
+    | Italian
+
 [<RequireQualifiedAccess>]
 type DateOption =
 | Date of System.DateTime

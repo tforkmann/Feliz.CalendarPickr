@@ -79,12 +79,14 @@ type imperativeOption =
     static member inline maxDateDT(date: DateTime) : IImperativeOptionsProp =
         Interop.mkImperativeOptionsProp "maxDate" date
 
-    /// Locale setting ("de" for German, "default" for English)
-    static member inline locale(locale: string) : IImperativeOptionsProp =
+    /// Locale setting for calendar localization
+    static member inline locale(locale: Locale) : IImperativeOptionsProp =
         let localeObj =
             match locale with
-            | "de" -> Interop.germanLocale?``default``?de
-            | _ -> JS.undefined
+            | Locale.German -> Interop.germanLocale?``default``?de
+            | Locale.French -> Interop.frenchLocale?``default``?fr
+            | Locale.Italian -> Interop.italianLocale?``default``?it
+            | Locale.English -> JS.undefined
         Interop.mkImperativeOptionsProp "locale" localeObj
 
     /// onChange callback - fires when user selects a date

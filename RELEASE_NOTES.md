@@ -1,3 +1,9 @@
+#### 1.2.0 - 2026-02-03
+* **BREAKING:** `imperativeOption.locale` now takes `Locale` DU instead of string
+* New `Locale` type: `Locale.German`, `Locale.English`, `Locale.French`, `Locale.Italian`
+* Add French and Italian locale support
+* Import all locale files as side effects for proper flatpickr l10n
+
 #### 1.1.0 - 2025-12-11
 * Add imperative flatpickr binding for direct instance control
 * New `ImperativeFlatPickr` module with React hook `useImperativeFlatPickr`
