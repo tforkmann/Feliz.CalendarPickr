@@ -81,13 +81,13 @@ type imperativeOption =
 
     /// Locale setting for calendar localization
     static member inline locale(locale: Locale) : IImperativeOptionsProp =
-        let localeObj =
+        let localeStr =
             match locale with
-            | Locale.German -> Interop.germanLocale?``default``?de
-            | Locale.French -> Interop.frenchLocale?``default``?fr
-            | Locale.Italian -> Interop.italianLocale?``default``?it
-            | Locale.English -> JS.undefined
-        Interop.mkImperativeOptionsProp "locale" localeObj
+            | Locale.German -> "de"
+            | Locale.French -> "fr"
+            | Locale.Italian -> "it"
+            | Locale.English -> "en"
+        Interop.mkImperativeOptionsProp "locale" localeStr
 
     /// onChange callback - fires when user selects a date
     static member inline onChange(callback: DateTimeOffset array -> unit) : IImperativeOptionsProp =

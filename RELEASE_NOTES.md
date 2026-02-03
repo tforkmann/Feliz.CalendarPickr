@@ -1,5 +1,5 @@
-#### 1.2.0 - 2026-02-03
-* **BREAKING:** `imperativeOption.locale` now takes `Locale` DU instead of string
+#### 1.2.1 - 2026-02-03
+* **BREAKING:** `option.locale` and `imperativeOption.locale` now take `Locale` DU instead of string
 * New `Locale` type: `Locale.German`, `Locale.English`, `Locale.French`, `Locale.Italian`
 * Add French and Italian locale support
 * Import all locale files as side effects for proper flatpickr l10n

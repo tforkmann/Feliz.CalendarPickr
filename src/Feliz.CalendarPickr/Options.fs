@@ -10,8 +10,15 @@ type option =
         Interop.mkOptionsProp "allowInput" allowInput
     static member inline clearable(clearable: bool) : IOptionsProp =
         Interop.mkOptionsProp "clearable" clearable
-    static member inline locale(locale: string) : IOptionsProp =
-        Interop.mkOptionsProp "locale" locale
+    /// Locale setting for calendar localization
+    static member inline locale(locale: Locale) : IOptionsProp =
+        let localeStr =
+            match locale with
+            | Locale.German -> "de"
+            | Locale.French -> "fr"
+            | Locale.Italian -> "it"
+            | Locale.English -> "en"
+        Interop.mkOptionsProp "locale" localeStr
     static member inline dateFormat(format: string) : IOptionsProp =
         Interop.mkOptionsProp "dateFormat" format
     static member inline disableMobile(disableMobile: bool) : IOptionsProp =

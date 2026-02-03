@@ -13,17 +13,8 @@ module Interop =
     /// Direct flatpickr import (not react-flatpickr)
     let flatpickrModule: obj = importDefault "flatpickr"
 
-    /// German locale
-    let germanLocale: obj = importDefault "flatpickr/dist/l10n/de.js"
-
-    /// French locale
-    let frenchLocale: obj = importDefault "flatpickr/dist/l10n/fr.js"
-
-    /// Italian locale
-    let italianLocale: obj = importDefault "flatpickr/dist/l10n/it.js"
-
-    // Import base flatpickr CSS instead of hardcoded theme
-    // Users can import their own theme or override colors via CSS variables
+    // Import base flatpickr CSS and locale files as side effects
+    // This registers locales globally so we can use string identifiers
     importSideEffects "flatpickr/dist/flatpickr.css"
     importSideEffects "flatpickr/dist/l10n/de.js"
     importSideEffects "flatpickr/dist/l10n/fr.js"

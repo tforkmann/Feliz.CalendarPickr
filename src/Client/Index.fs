@@ -87,7 +87,7 @@ let FlatPickrControl (value: DateTimeOffset) (onChange: DateTimeOffset -> unit) 
             option.allowInput true
             option.enableTime true
             option.time_24hr true
-            option.locale "de"
+            option.locale Locale.German
             option.defaultDate (DateOption.DateTimeOffset value)
         ]
     ]
@@ -113,7 +113,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                     option.allowInput true
                     option.enableTime true
                     option.time_24hr true
-                    option.locale "de"
+                    option.locale Locale.German
                     option.defaultDate (DateOption.DateTimeOffset model.Today)
                 ]
             ]
@@ -134,7 +134,7 @@ let view (model: Model) (dispatch: Msg -> unit) =
                 flatPickr.options [
                     option.enableRange
                     option.dateFormat "d.m.Y"
-                    option.locale "de"
+                    option.locale Locale.German
                     option.showMonths 2
                     option.rangeSeparator " bis "
                 ]
